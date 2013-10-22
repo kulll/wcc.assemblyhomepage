@@ -19,14 +19,15 @@
 <body>
 
 <metal:main fill-slot="content-core">
-  <metal:content-core define-macro="content-core">
+<metal:content-core define-macro="content-core"
+        tal:define="mainview nocall:context/@@view">
 
 
       <div tal:content="structure context/text"></div>
 
       <div class="assemblyhomepage-newslisting">
 
-          <div tal:define="item view/featured_item"
+          <div tal:define="item mainview/featured_item"
               tal:condition="item">
               <h2><a tal:attributes="href item/absolute_url"
                       tal:content="item/Title"></a></h2>
@@ -44,7 +45,7 @@
               </table>
 
           </div>
-        <tal:r repeat="item view/news_items">
+        <tal:r repeat="item mainview/news_items">
 
             <div class="assemblyhomepage-newsitem">
                 <h3><a tal:attributes="href item/absolute_url"
@@ -53,8 +54,8 @@
         </tal:r>
     </div>
 
-    <div class="assemblyhomepage-morenews" 
-        tal:define="more_news_target view/more_news_target"
+    <div style="text-align:right" class="assemblyhomepage-morenews" 
+        tal:define="more_news_target mainview/more_news_target"
         tal:condition="more_news_target">
         <a tal:attributes="href more_news_target/absolute_url">
             More News

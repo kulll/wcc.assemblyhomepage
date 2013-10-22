@@ -87,7 +87,6 @@ class Index(dexterity.DisplayForm):
             return results[0].getObject()
         return None
 
-
     def news_items(self):
         rel = self.context.news_source
         if not rel:
